@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>进货销售管理系统</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="header">
+        <h1>进货销售管理系统</h1>
+        <a href="/logout" class="logout">退出</a>
+    </div>
+    
+    <div class="nav">
+        <a href="/purchase" class="nav-btn">进货</a>
+        <a href="/sale" class="nav-btn">销售</a>
+        <a href="/customers" class="nav-btn">客户</a>
+        <a href="/reconciliation" class="nav-btn">对账</a>
+    </div>
+    
+    <div class="container">
+        <div class="card">
+            <h2>今日数据</h2>
+            <div class="data-row">
+                <div class="data-item">
+                    <span class="label">进货</span>
+                    <span class="value">¥{{ '%.2f'|format(purchase_today) }}</span>
+                </div>
+                <div class="data-item">
+                    <span class="label">销售</span>
+                    <span class="value">¥{{ '%.2f'|format(sale_today) }}</span>
+                </div>
+                <div class="data-item">
+                    <span class="label">利润</span>
+                    <span class="value">¥{{ '%.2f'|format(sale_today - purchase_today) }}</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card">
+            <h2>客户欠款</h2>
+            {% if debts %}
+                <ul class="debt-list">
+                {% for d in debts %}
+                    <li>{{ d.name }}：¥{{ '%.2f'|format(d.debt) }}</li>
+                {% endfor %}
+                </ul>
+                <a href="/customers" class="view-all">查看全部</a>
+            {% else %}
+                <p class="no-data">暂无数据</p>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>

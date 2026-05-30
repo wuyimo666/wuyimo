@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>对账</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="header">
+        <h1>对账</h1>
+        <a href="/" class="back">返回</a>
+    </div>
+    
+    <div class="container">
+        <div class="card">
+            <h2>选择客户</h2>
+            <form method="GET">
+                <div class="form-group">
+                    <label>客户</label>
+                    <select name="customer_id" onchange="this.form.submit()">
+                        <option value="">请选择</option>
+                        {% for c in customers %}
+                        <option value="{{ c.id }}" {% if customer and c.id == customer.id %}selected{% endif %}>{{ c.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </form>
+        </div>
+        
+        {% if customer %}
+        <div class="card">
+            <h2>{{ customer.name }} - 对账单</h2>
+            
+            <div class="debt-summary">
+                <div class="debt-item">
+                    <span class="label">总进货</span>
+                    <span class="value">¥{{ '%.2f'|format(total_purchase) }}</span>
+                </div>
+                <div class="debt-item">
+                    <span class="label">总销售</span>
+                    <span class="value">¥{{ '%.2f'|format(total_sale) }}</span>
+                </div>
+                <div class="debt-item {% if debt > 0 %}debt-positive{% else %}debt-zero{% endif %}">
+                    <span class="label">欠款金额</span>
+                    <span class="value">¥{{ '%.2f'|format(debt) }}</span>
+                </div>
+            </div>
+            
+            <h3>进货记录</h3>
+            {% if purchases %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>日期</th>
+                        <th>商品</th>
+                        <th>数量</th>
+                        <th>单价</th>
+                        <th>金额</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for p in purchases %}
+                    <tr>
+                        <td>{{ p.record_date }}</td>
+                        <td>{{ p.product.name if p.product else '' }}</td>
+                        <td>{{ '%.2f'|format(p.quantity) }}</td>
+                        <td>{{ '%.2f'|format(p.unit_price) }}</td>
+                        <td>{{ '%.2f'|format(p.total_amount) }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% else %}
+            <p class="no-data">暂无进货记录</p>
+            {% endif %}
+            
+            <h3>销售记录</h3>
+            {% if sales %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>日期</th>
+                        <th>商品</th>
+                        <th>数量</th>
+                        <th>单价</th>
+                        <th>金额</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for s in sales %}
+                    <tr>
+                        <td>{{ s.record_date }}</td>
+                        <td>{{ s.product.name if s.product else '' }}</td>
+                        <td>{{ '%.2f'|format(s.quantity) }}</td>
+                        <td>{{ '%.2f'|format(s.unit_price) }}</td>
+                        <td>{{ '%.2f'|format(s.total_amount) }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% else %}
+            <p class="no-data">暂无销售记录</p>
+            {% endif %}
+            
+            <div class="actions">
+                <button onclick="window.print()" class="btn btn-primary">打印</button>
+                <button onclick="exportExcel()" class="btn btn-secondary">导出Excel</button>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+    
+    <script>
+        function exportExcel() {
+            alert('导出Excel功能开发中...');
+        }
+    </script>
+</body>
+</html>
