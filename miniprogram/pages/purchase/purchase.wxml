@@ -9,13 +9,17 @@
             <navigator url="/pages/customers/customers" class="add-btn">+ 添加</navigator>
         </view>
         <view class="form-group">
+            <text>工地名称</text>
+            <input placeholder="请输入工地名称" value="{{ siteName }}" bindinput="onSiteNameInput" />
+        </view>
+        <view class="form-group">
             <text>商品</text>
             <picker mode="selector" range="{{ products }}" range-key="name" bindchange="onProductChange">
                 <view class="picker">{{ productIndex >= 0 ? products[productIndex].name : '请选择' }}</view>
             </picker>
         </view>
         <view class="form-group">
-            <text>数量</text>
+            <text>数量 ({{ unit }})</text>
             <input type="digit" placeholder="请输入数量" value="{{ quantity }}" bindinput="onQuantityInput" />
         </view>
         <view class="form-group">
@@ -46,6 +50,7 @@
                 <view class="table-header">
                     <text class="col-date">日期</text>
                     <text class="col-name">供应商</text>
+                    <text class="col-site">工地</text>
                     <text class="col-prod">商品</text>
                     <text class="col-qty">数量</text>
                     <text class="col-price">单价</text>
@@ -54,8 +59,9 @@
                 <view wx:for="{{ records }}" wx:key="index" class="table-row">
                     <text class="col-date">{{ item.date }}</text>
                     <text class="col-name">{{ item.customerName }}</text>
+                    <text class="col-site">{{ item.siteName }}</text>
                     <text class="col-prod">{{ item.productName }}</text>
-                    <text class="col-qty">{{ item.quantity }}</text>
+                    <text class="col-qty">{{ item.quantity }}{{ item.unit }}</text>
                     <text class="col-price">{{ item.unitPrice }}</text>
                     <text class="col-total">{{ item.totalAmount }}</text>
                 </view>

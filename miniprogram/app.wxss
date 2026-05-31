@@ -76,3 +76,176 @@ button[type="primary"]:active {
     padding: 60rpx 0;
     font-size: 28rpx;
 }
+
+/* 表格样式 */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20rpx;
+}
+
+.table-header {
+    display: flex;
+    background: #F8F9FA;
+    padding: 16rpx 0;
+    border-bottom: 2rpx solid #EAEAEA;
+    font-weight: bold;
+    color: #555;
+    font-size: 24rpx;
+}
+
+.table-row {
+    display: flex;
+    padding: 16rpx 0;
+    border-bottom: 1rpx solid #F5F5F5;
+    font-size: 24rpx;
+    color: #333;
+}
+
+.col-date {
+    width: 160rpx;
+    flex-shrink: 0;
+}
+
+.col-name {
+    width: 120rpx;
+    flex-shrink: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.col-site {
+    width: 140rpx;
+    flex-shrink: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.col-prod {
+    width: 120rpx;
+    flex-shrink: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.col-qty {
+    width: 100rpx;
+    flex-shrink: 0;
+    text-align: center;
+}
+
+.col-price {
+    width: 100rpx;
+    flex-shrink: 0;
+    text-align: right;
+}
+
+.col-total {
+    width: 120rpx;
+    flex-shrink: 0;
+    text-align: right;
+    font-weight: bold;
+}
+
+.add-btn {
+    color: #1aad19;
+    font-size: 28rpx;
+    margin-left: 20rpx;
+}
+
+.btn-small {
+    font-size: 24rpx;
+    color: #1aad19;
+    padding: 8rpx 16rpx;
+    border: 1rpx solid #1aad19;
+    border-radius: 8rpx;
+    margin-left: 20rpx;
+}
+
+.customer-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24rpx 0;
+    border-bottom: 1rpx solid #F5F5F5;
+}
+
+.customer-info {
+    flex: 1;
+}
+
+.customer-name {
+    font-size: 30rpx;
+    font-weight: 500;
+    display: block;
+}
+
+.customer-contact {
+    font-size: 24rpx;
+    color: #999;
+    display: block;
+    margin-top: 8rpx;
+}
+
+.customer-debt {
+    font-size: 32rpx;
+    font-weight: bold;
+    margin-right: 20rpx;
+}
+
+.debt-positive {
+    color: #E74C3C;
+}
+
+.debt-zero {
+    color: #2ECC71;
+}
+
+.debt-summary {
+    display: flex;
+    justify-content: space-around;
+    margin: 30rpx 0;
+    padding: 30rpx 0;
+    border-bottom: 1rpx solid #EEE;
+}
+
+.debt-item {
+    text-align: center;
+}
+
+.debt-item .label {
+    display: block;
+    font-size: 24rpx;
+    color: #999;
+    margin-bottom: 10rpx;
+}
+
+.debt-item .value {
+    display: block;
+    font-size: 36rpx;
+    font-weight: bold;
+    color: #2C3E50;
+}
+
+.section-title {
+    font-size: 30rpx;
+    font-weight: bold;
+    color: #2C3E50;
+    margin: 30rpx 0 20rpx 0;
+    padding-bottom: 15rpx;
+    border-bottom: 1rpx solid #EEE;
+}
+
+.actions {
+    display: flex;
+    gap: 20rpx;
+    margin-top: 40rpx;
+}
+
+.actions button {
+    flex: 1;
+    font-size: 28rpx;
+}

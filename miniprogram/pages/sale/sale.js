@@ -4,7 +4,9 @@ Page({
         products: [],
         customerIndex: -1,
         productIndex: -1,
+        siteName: '',
         quantity: 1,
+        unit: '',
         unitPrice: 0,
         totalAmount: 0,
         recordDate: new Date().toISOString().split('T')[0],
@@ -42,9 +44,14 @@ Page({
         const product = this.data.products[index];
         this.setData({
             productIndex: index,
-            unitPrice: product.defaultPrice || 0
+            unitPrice: product.defaultPrice || 0,
+            unit: product.unit || ''
         });
         this.calcTotal();
+    },
+
+    onSiteNameInput: function(e) {
+        this.setData({ siteName: e.detail.value });
     },
 
     onQuantityInput: function(e) {
@@ -79,15 +86,22 @@ Page({
             wx.showToast({ title: '请选择商品', icon: 'none' });
             return;
         }
+        if (!this.data.siteName) {
+            wx.showToast({ title: '请输入工地名称', icon: 'none' });
+            return;
+        }
 
+        const product = this.data.products[this.data.productIndex];
         const record = {
             id: Date.now(),
             type: 'sale',
             customerId: this.data.customers[this.data.customerIndex].id,
             customerName: this.data.customers[this.data.customerIndex].name,
-            productId: this.data.products[this.data.productIndex].id,
-            productName: this.data.products[this.data.productIndex].name,
+            siteName: this.data.siteName,
+            productId: product.id,
+            productName: product.name,
             quantity: this.data.quantity,
+            unit: product.unit || '',
             unitPrice: this.data.unitPrice,
             totalAmount: parseFloat(this.data.totalAmount),
             date: this.data.recordDate,
@@ -105,7 +119,9 @@ Page({
         this.setData({
             customerIndex: -1,
             productIndex: -1,
+            siteName: '',
             quantity: 1,
+            unit: '',
             unitPrice: 0,
             totalAmount: 0,
             note: '',

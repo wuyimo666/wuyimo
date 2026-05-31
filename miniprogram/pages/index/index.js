@@ -20,8 +20,8 @@ Page({
         
         records.forEach(r => {
             if (r.date === today) {
-                if (r.type === 'purchase') purchaseToday += r.amount;
-                if (r.type === 'sale') saleToday += r.amount;
+                if (r.type === 'purchase') purchaseToday += r.totalAmount;
+                if (r.type === 'sale') saleToday += r.totalAmount;
             }
         });
         
@@ -32,8 +32,8 @@ Page({
             let debt = 0;
             records.forEach(r => {
                 if (r.customerName === c.name) {
-                    if (r.type === 'purchase') debt += r.amount;
-                    if (r.type === 'sale') debt -= r.amount;
+                    if (r.type === 'purchase') debt += r.totalAmount;
+                    if (r.type === 'sale') debt -= r.totalAmount;
                 }
             });
             if (debt !== 0) {

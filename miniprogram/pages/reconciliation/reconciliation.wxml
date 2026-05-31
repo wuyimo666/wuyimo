@@ -30,6 +30,7 @@
                 <view class="table">
                     <view class="table-header">
                         <text class="col-date">日期</text>
+                        <text class="col-site">工地</text>
                         <text class="col-prod">商品</text>
                         <text class="col-qty">数量</text>
                         <text class="col-price">单价</text>
@@ -37,8 +38,9 @@
                     </view>
                     <view wx:for="{{ purchases }}" wx:key="id" class="table-row">
                         <text class="col-date">{{ item.date }}</text>
+                        <text class="col-site">{{ item.siteName }}</text>
                         <text class="col-prod">{{ item.productName }}</text>
-                        <text class="col-qty">{{ item.quantity }}</text>
+                        <text class="col-qty">{{ item.quantity }}{{ item.unit }}</text>
                         <text class="col-price">{{ item.unitPrice }}</text>
                         <text class="col-total">{{ item.totalAmount }}</text>
                     </view>
@@ -51,6 +53,7 @@
                 <view class="table">
                     <view class="table-header">
                         <text class="col-date">日期</text>
+                        <text class="col-site">工地</text>
                         <text class="col-prod">商品</text>
                         <text class="col-qty">数量</text>
                         <text class="col-price">单价</text>
@@ -58,8 +61,9 @@
                     </view>
                     <view wx:for="{{ sales }}" wx:key="id" class="table-row">
                         <text class="col-date">{{ item.date }}</text>
+                        <text class="col-site">{{ item.siteName }}</text>
                         <text class="col-prod">{{ item.productName }}</text>
-                        <text class="col-qty">{{ item.quantity }}</text>
+                        <text class="col-qty">{{ item.quantity }}{{ item.unit }}</text>
                         <text class="col-price">{{ item.unitPrice }}</text>
                         <text class="col-total">{{ item.totalAmount }}</text>
                     </view>
