@@ -1,0 +1,48 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/purchase/purchase",
+    "pages/sale/sale",
+    "pages/customers/customers",
+    "pages/reconciliation/reconciliation"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#1aad19",
+    "navigationBarTitleText": "库存管理系统",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "color": "#999999",
+    "selectedColor": "#1aad19",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "images/home.png",
+        "selectedIconPath": "images/home-active.png"
+      },
+      {
+        "pagePath": "pages/purchase/purchase",
+        "text": "进货",
+        "iconPath": "images/purchase.png",
+        "selectedIconPath": "images/purchase-active.png"
+      },
+      {
+        "pagePath": "pages/sale/sale",
+        "text": "销售",
+        "iconPath": "images/sale.png",
+        "selectedIconPath": "images/sale-active.png"
+      },
+      {
+        "pagePath": "pages/customers/customers",
+        "text": "客户",
+        "iconPath": "images/customer.png",
+        "selectedIconPath": "images/customer-active.png"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json"
+}
