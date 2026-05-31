@@ -1,0 +1,35 @@
+<view class="container">
+    <view class="card">
+        <view class="card-title">添加客户</view>
+        <view class="form-group">
+            <text>客户名称</text>
+            <input placeholder="请输入客户名称" value="{{ name }}" bindinput="onNameInput" />
+        </view>
+        <view class="form-group">
+            <text>联系方式</text>
+            <input placeholder="请输入联系方式" value="{{ contact }}" bindinput="onContactInput" />
+        </view>
+        <view class="form-group">
+            <text>地址</text>
+            <input placeholder="请输入地址" value="{{ address }}" bindinput="onAddressInput" />
+        </view>
+        <button type="primary" bindtap="addCustomer">添加</button>
+    </view>
+    
+    <view class="card">
+        <view class="card-title">客户列表</view>
+        <view wx:if="{{ customers.length > 0 }}">
+            <view wx:for="{{ customers }}" wx:key="id" class="customer-item">
+                <view class="customer-info">
+                    <text class="customer-name">{{ item.name }}</text>
+                    <text class="customer-contact">{{ item.contact }}</text>
+                </view>
+                <view class="customer-debt {{ item.debt > 0 ? 'debt-positive' : 'debt-zero' }}">
+                    ¥{{ item.debt }}
+                </view>
+                <navigator url="/pages/reconciliation/reconciliation?customerId={{ item.id }}" class="btn-small">对账</navigator>
+            </view>
+        </view>
+        <view wx:else class="no-data">暂无客户，请添加</view>
+    </view>
+</view>

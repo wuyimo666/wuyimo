@@ -1,0 +1,66 @@
+<view class="container">
+    <view class="card">
+        <view class="card-title">添加进货记录</view>
+        <view class="form-group">
+            <text>供应商</text>
+            <picker mode="selector" range="{{ customers }}" range-key="name" bindchange="onCustomerChange">
+                <view class="picker">{{ customerIndex >= 0 ? customers[customerIndex].name : '请选择' }}</view>
+            </picker>
+            <navigator url="/pages/customers/customers" class="add-btn">+ 添加</navigator>
+        </view>
+        <view class="form-group">
+            <text>商品</text>
+            <picker mode="selector" range="{{ products }}" range-key="name" bindchange="onProductChange">
+                <view class="picker">{{ productIndex >= 0 ? products[productIndex].name : '请选择' }}</view>
+            </picker>
+        </view>
+        <view class="form-group">
+            <text>数量</text>
+            <input type="digit" placeholder="请输入数量" value="{{ quantity }}" bindinput="onQuantityInput" />
+        </view>
+        <view class="form-group">
+            <text>单价(元)</text>
+            <input type="digit" placeholder="请输入单价" value="{{ unitPrice }}" bindinput="onUnitPriceInput" />
+        </view>
+        <view class="form-group">
+            <text>金额(元)</text>
+            <input type="digit" value="{{ totalAmount }}" disabled />
+        </view>
+        <view class="form-group">
+            <text>日期</text>
+            <picker mode="date" value="{{ recordDate }}" bindchange="onDateChange">
+                <view class="picker">{{ recordDate }}</view>
+            </picker>
+        </view>
+        <view class="form-group">
+            <text>备注</text>
+            <input type="text" placeholder="请输入备注" value="{{ note }}" bindinput="onNoteInput" />
+        </view>
+        <button type="primary" bindtap="saveRecord">保存</button>
+    </view>
+    
+    <view class="card">
+        <view class="card-title">进货记录</view>
+        <view wx:if="{{ records.length > 0 }}">
+            <view class="table">
+                <view class="table-header">
+                    <text class="col-date">日期</text>
+                    <text class="col-name">供应商</text>
+                    <text class="col-prod">商品</text>
+                    <text class="col-qty">数量</text>
+                    <text class="col-price">单价</text>
+                    <text class="col-total">金额</text>
+                </view>
+                <view wx:for="{{ records }}" wx:key="index" class="table-row">
+                    <text class="col-date">{{ item.date }}</text>
+                    <text class="col-name">{{ item.customerName }}</text>
+                    <text class="col-prod">{{ item.productName }}</text>
+                    <text class="col-qty">{{ item.quantity }}</text>
+                    <text class="col-price">{{ item.unitPrice }}</text>
+                    <text class="col-total">{{ item.totalAmount }}</text>
+                </view>
+            </view>
+        </view>
+        <view wx:else class="no-data">暂无记录</view>
+    </view>
+</view>

@@ -1,0 +1,76 @@
+<view class="container">
+    <view class="card">
+        <view class="card-title">选择客户</view>
+        <picker mode="selector" range="{{ customers }}" range-key="name" bindchange="onCustomerChange">
+            <view class="picker">{{ customer ? customer.name : '请选择' }}</view>
+        </picker>
+    </view>
+    
+    <view wx:if="{{ customer }}">
+        <view class="card">
+            <view class="card-title">{{ customer.name }} - 对账单</view>
+            
+            <view class="debt-summary">
+                <view class="debt-item">
+                    <text class="label">总进货</text>
+                    <text class="value">¥{{ totalPurchase }}</text>
+                </view>
+                <view class="debt-item">
+                    <text class="label">总销售</text>
+                    <text class="value">¥{{ totalSale }}</text>
+                </view>
+                <view class="debt-item {{ debt > 0 ? 'debt-positive' : 'debt-zero' }}">
+                    <text class="label">欠款金额</text>
+                    <text class="value">¥{{ debt }}</text>
+                </view>
+            </view>
+            
+            <view class="section-title">进货记录</view>
+            <view wx:if="{{ purchases.length > 0 }}">
+                <view class="table">
+                    <view class="table-header">
+                        <text class="col-date">日期</text>
+                        <text class="col-prod">商品</text>
+                        <text class="col-qty">数量</text>
+                        <text class="col-price">单价</text>
+                        <text class="col-total">金额</text>
+                    </view>
+                    <view wx:for="{{ purchases }}" wx:key="id" class="table-row">
+                        <text class="col-date">{{ item.date }}</text>
+                        <text class="col-prod">{{ item.productName }}</text>
+                        <text class="col-qty">{{ item.quantity }}</text>
+                        <text class="col-price">{{ item.unitPrice }}</text>
+                        <text class="col-total">{{ item.totalAmount }}</text>
+                    </view>
+                </view>
+            </view>
+            <view wx:else class="no-data">暂无进货记录</view>
+            
+            <view class="section-title">销售记录</view>
+            <view wx:if="{{ sales.length > 0 }}">
+                <view class="table">
+                    <view class="table-header">
+                        <text class="col-date">日期</text>
+                        <text class="col-prod">商品</text>
+                        <text class="col-qty">数量</text>
+                        <text class="col-price">单价</text>
+                        <text class="col-total">金额</text>
+                    </view>
+                    <view wx:for="{{ sales }}" wx:key="id" class="table-row">
+                        <text class="col-date">{{ item.date }}</text>
+                        <text class="col-prod">{{ item.productName }}</text>
+                        <text class="col-qty">{{ item.quantity }}</text>
+                        <text class="col-price">{{ item.unitPrice }}</text>
+                        <text class="col-total">{{ item.totalAmount }}</text>
+                    </view>
+                </view>
+            </view>
+            <view wx:else class="no-data">暂无销售记录</view>
+            
+            <view class="actions">
+                <button bindtap="printReconciliation">打印</button>
+                <button bindtap="exportExcel">导出Excel</button>
+            </view>
+        </view>
+    </view>
+</view>

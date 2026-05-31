@@ -1,0 +1,30 @@
+<view class="container">
+    <view class="header">
+        <text class="title">进货销售管理</text>
+    </view>
+    
+    <view class="data-card">
+        <view class="data-item">
+            <text class="data-label">今日进货</text>
+            <text class="data-value">¥{{ purchaseToday }}</text>
+        </view>
+        <view class="data-item">
+            <text class="data-label">今日销售</text>
+            <text class="data-value">¥{{ saleToday }}</text>
+        </view>
+        <view class="data-item">
+            <text class="data-label">今日利润</text>
+            <text class="data-value">¥{{ profitToday }}</text>
+        </view>
+    </view>
+    
+    <view class="debt-card">
+        <view class="card-title">客户欠款</view>
+        <view wx:for="{{ debts }}" wx:key="name" class="debt-item">
+            <text>{{ item.name }}</text>
+            <text class="debt-amount">¥{{ item.debt }}</text>
+        </view>
+        <view wx:if="{{ debts.length === 0 }}" class="no-data">暂无数据</view>
+        <navigator url="/pages/customers/customers" class="view-all">查看全部</navigator>
+    </view>
+</view>

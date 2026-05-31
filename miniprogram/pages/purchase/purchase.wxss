@@ -1,0 +1,102 @@
+.card {
+    background: white;
+    margin: 30rpx;
+    padding: 40rpx;
+    border-radius: 16rpx;
+    box-shadow: 0 4rpx 12rpx rgba(0,0,0,0.08);
+}
+
+.card-title {
+    color: #2C3E50;
+    font-size: 34rpx;
+    font-weight: bold;
+    margin-bottom: 30rpx;
+    padding-bottom: 20rpx;
+    border-bottom: 1rpx solid #EEE;
+}
+
+.form-group {
+    margin-bottom: 30rpx;
+}
+
+.form-group text {
+    display: block;
+    color: #555;
+    font-size: 28rpx;
+    margin-bottom: 12rpx;
+    font-weight: 500;
+}
+
+.picker {
+    background: #F8F9FA;
+    padding: 20rpx;
+    border-radius: 8rpx;
+    border: 1rpx solid #DDD;
+    font-size: 30rpx;
+}
+
+input {
+    width: 100%;
+    padding: 20rpx;
+    border: 1rpx solid #DDD;
+    border-radius: 8rpx;
+    font-size: 30rpx;
+    background: #F8F9FA;
+}
+
+.add-btn {
+    display: inline-block;
+    margin-left: 20rpx;
+    padding: 8rpx 20rpx;
+    background: #27AE60;
+    color: white;
+    border-radius: 8rpx;
+    font-size: 26rpx;
+    text-decoration: none;
+}
+
+button[type="primary"] {
+    width: 100%;
+    background: #3498DB;
+    color: white;
+    border: none;
+    border-radius: 8rpx;
+    padding: 24rpx;
+    font-size: 32rpx;
+    margin-top: 30rpx;
+}
+
+.table {
+    margin-top: 30rpx;
+}
+
+.table-header {
+    display: flex;
+    background: #F8F9FA;
+    padding: 20rpx 10rpx;
+    border-radius: 8rpx 8rpx 0 0;
+    font-weight: 500;
+    color: #555;
+    font-size: 26rpx;
+}
+
+.table-row {
+    display: flex;
+    padding: 20rpx 10rpx;
+    border-bottom: 1rpx solid #F5F5F5;
+    font-size: 26rpx;
+}
+
+.col-date { width: 20%; }
+.col-name { width: 20%; }
+.col-prod { width: 25%; }
+.col-qty { width: 10%; }
+.col-price { width: 15%; }
+.col-total { width: 10%; }
+
+.no-data {
+    text-align: center;
+    color: #999;
+    padding: 60rpx 0;
+    font-size: 28rpx;
+}
