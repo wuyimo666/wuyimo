@@ -72,7 +72,7 @@ Page({
 
     saveRecord: function() {
         if (this.data.customerIndex < 0) {
-            wx.showToast({ title: '请选择供应商', icon: 'none' });
+            wx.showToast({ title: '请选择客户', icon: 'none' });
             return;
         }
         if (this.data.productIndex < 0) {

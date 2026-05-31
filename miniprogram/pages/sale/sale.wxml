@@ -1,8 +1,8 @@
 <view class="container">
     <view class="card">
-        <view class="card-title">添加进货记录</view>
+        <view class="card-title">添加销售记录</view>
         <view class="form-group">
-            <text>供应商</text>
+            <text>客户</text>
             <picker mode="selector" range="{{ customers }}" range-key="name" bindchange="onCustomerChange">
                 <view class="picker">{{ customerIndex >= 0 ? customers[customerIndex].name : '请选择' }}</view>
             </picker>
@@ -40,12 +40,12 @@
     </view>
     
     <view class="card">
-        <view class="card-title">进货记录</view>
+        <view class="card-title">销售记录</view>
         <view wx:if="{{ records.length > 0 }}">
             <view class="table">
                 <view class="table-header">
                     <text class="col-date">日期</text>
-                    <text class="col-name">供应商</text>
+                    <text class="col-name">客户</text>
                     <text class="col-prod">商品</text>
                     <text class="col-qty">数量</text>
                     <text class="col-price">单价</text>
